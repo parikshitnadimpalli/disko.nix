@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/nvme0n0";
         content = {
           type = "gpt";
           partitions = {
@@ -18,7 +18,7 @@
               };
             };
             Swap = {
-              size = "35G"; # Adjust based on installed RAM
+              size = "24G"; # Adjust based on installed RAM
               content = {
                 type = "swap";
                 discardPolicy = "both";
