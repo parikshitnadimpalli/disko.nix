@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme0n0";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
@@ -32,7 +32,6 @@
                 name = "crypted";
                 settings = {
                   allowDiscards = true;
-                  keyFile = "~/secret.key";
                 };
                 content = {
                   type = "filesystem";
