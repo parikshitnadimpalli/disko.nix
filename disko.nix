@@ -36,9 +36,26 @@
                 content = {
                   type = "filesystem";
                   format = "btrfs";
-                  mountpoint = "/";
-                  mountOptions = [ "compress=zstd" "noatime" ]; # Disk compression and writing access time prevention
-                };
+                  "/" = {
+                      mountpoint = "/";
+                      mountOptions = [ "compress=zstd" "noatime" ];
+                  };
+                  "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [ "compress=zstd" "noatime" ];
+                  };
+                  "/var/log" = {
+                      mountpoint = "/var/log";
+                  };
+                  "/var/log/journal" = {
+                      mountpoint = "/var/log/journal";
+                  };
+                  "/home" = {
+                      mountpoint = "/home";
+                  };
+                  "/tmp" = {
+                      mountpoint = "/tmp";
+                  };
               };
             };
           };
