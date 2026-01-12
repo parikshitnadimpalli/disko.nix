@@ -17,14 +17,6 @@
                 mountOptions = [ "umask=0077" ]; # To ensure only root user can read/write
               };
             };
-            Swap = {
-              size = "24G"; # Adjust based on installed RAM
-              content = {
-                type = "swap";
-                discardPolicy = "both";
-                resumeDevice = true; # Enables Hibernation
-              };
-            };
             luks = {
               size = "100%";
               content = {
@@ -34,28 +26,33 @@
                   allowDiscards = true;
                 };
                 content = {
-                  type = "filesystem";
-                  format = "btrfs";
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
                   subvolumes = {
-                    "/" = {
+                    "/root" = {
                       mountpoint = "/";
-                      mountOptions = [ "compress=zstd" "noatime" ];
-                    };
-                    "/nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [ "compress=zstd" "noatime" ];
-                    };
-                    "/var/log" = {
-                      mountpoint = "/var/log";
-                    };
-                    "/var/log/journal" = {
-                      mountpoint = "/var/log/journal";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/home" = {
                       mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
-                    "/tmp" = {
-                      mountpoint = "/tmp";
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/swap" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "20M";
                     };
                   };
                 };
