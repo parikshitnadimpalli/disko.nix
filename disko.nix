@@ -36,25 +36,27 @@
                 content = {
                   type = "filesystem";
                   format = "btrfs";
-                  "/" = {
+                  subvolumes = {
+                    "/" = {
                       mountpoint = "/";
                       mountOptions = [ "compress=zstd" "noatime" ];
-                  };
-                  "/nix" = {
+                    };
+                    "/nix" = {
                       mountpoint = "/nix";
                       mountOptions = [ "compress=zstd" "noatime" ];
-                  };
-                  "/var/log" = {
+                    };
+                    "/var/log" = {
                       mountpoint = "/var/log";
-                  };
-                  "/var/log/journal" = {
+                    };
+                    "/var/log/journal" = {
                       mountpoint = "/var/log/journal";
-                  };
-                  "/home" = {
+                    };
+                    "/home" = {
                       mountpoint = "/home";
-                  };
-                  "/tmp" = {
+                    };
+                    "/tmp" = {
                       mountpoint = "/tmp";
+                    };
                   };
               };
             };
