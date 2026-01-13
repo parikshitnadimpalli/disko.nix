@@ -55,7 +55,6 @@
                       mountOptions = [
                         "noatime"
                         "nodatacow"
-                        "nospace_cache=v2"
                       ];
                       swap.swapfile.size = "24G";
                     };
