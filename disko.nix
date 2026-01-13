@@ -51,7 +51,7 @@
                       ];
                     };
                     "/swap" = {
-                      mountpoint = "/.swapvol";
+                      mountpoint = "/swap";
                       mountOptions = [
                         "noatime"
                         "nodatacow"
